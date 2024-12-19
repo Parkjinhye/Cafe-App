@@ -42,11 +42,15 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Set user data from UserSession
-        binding.tvUsername.text = "Username: ${UserSession.username ?: "Unknown"}"
+        binding.tvUsername.text = "환영합니다!\n ${UserSession.username ?: "Unknown"}"
         binding.tvPoints.text = "Points: ${UserSession.point}"
         // 버튼 클릭 시 LoginActivity 열기
         binding.btnOpenLogin.setOnClickListener {
             val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnOpenSignup.setOnClickListener {
+            val intent = Intent(requireContext(), SignUpActivity::class.java)
             startActivity(intent)
         }
     }

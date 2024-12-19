@@ -13,8 +13,8 @@
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="340dp"
+        android:layout_height="56dp"
         android:layout_marginTop="96dp"
         android:hint="id"
         android:inputType="textEmailAddress"
@@ -26,8 +26,8 @@
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="340dp"
+        android:layout_height="48dp"
         android:layout_marginTop="36dp"
         android:hint="password"
         android:imeActionLabel="이게뭐여?"
@@ -36,7 +36,7 @@
         android:selectAllOnFocus="true"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etUsername" />
 
