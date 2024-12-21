@@ -12,10 +12,26 @@ import com.example.cafeapp.data.Menu
 class MenuAdapter(private val menuList: List<Menu>) :
     RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
-    class MenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private var onItemClickListener: ((Menu) -> Unit)? = null
+
+    // 리스너 설정 메서드
+    fun setOnItemClickListener(listener: (Menu) -> Unit) {
+        onItemClickListener = listener
+    }
+
+    inner class MenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameTextView: TextView = view.findViewById(R.id.text_menu_name)
         val priceTextView: TextView = view.findViewById(R.id.text_menu_price)
         val soldTextView: TextView = view.findViewById(R.id.text_menu_sold)
+
+        init {
+            view.setOnClickListener {
+                val position = adapterPosition
+                if(position != RecyclerView.NO_POSITION) {
+                    onItemClickListener?.invoke(menuList[position])
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
