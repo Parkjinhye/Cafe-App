@@ -43,9 +43,10 @@ class HomeFragment : Fragment() {
         indicatorLayout = binding.indicatorLayout
 
         val events = listOf(
-            EventItem(R.drawable.event1, "이벤트 제목 1", "이벤트 설명 1"),
-            EventItem(R.drawable.event2, "이벤트 제목 2", "이벤트 설명 2"),
-            EventItem(R.drawable.event3, "이벤트 제목 3", "이벤트 설명 3")
+            EventItem(R.drawable.event1, "🎉 특별 기념 케이크 예약!", "우리의 기념 케이크로 소중한 날을 더 달콤하게 만들어보세요!"),
+            EventItem(R.drawable.event2, "🫐 신메뉴 출시, 블루베리 팬케이크", "촉촉하고 풍부한 블루베리 팬케이크로 아침을 시작하세요! 한정 판매 중입니다."),
+            EventItem(R.drawable.event3, "❄️ 겨울 한정 따뜻한 윈터 메뉴", "올 겨울을 더 특별하게! 겨울에만 맛볼 수 있는 특별 메뉴를 만나보세요.")
+
         )
 
         viewPager.adapter = EventAdapter(events)
@@ -68,7 +69,7 @@ class HomeFragment : Fragment() {
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply { marginStart = 8 }
+                ).apply { marginStart = 12 }
                 layoutParams = params
             }
             indicatorLayout.addView(indicator)

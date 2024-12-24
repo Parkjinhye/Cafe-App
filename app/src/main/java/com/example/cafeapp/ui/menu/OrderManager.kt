@@ -1,4 +1,4 @@
-package com.example.cafeapp.ui.dashboard
+package com.example.cafeapp.ui.menu
 
 import android.content.Context
 import android.util.Log

@@ -17,10 +17,10 @@
         android:theme="@style/Theme.CafeApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.notifications.SignUpActivity"
+            android:name=".ui.myPage.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.notifications.LoginActivity"
+            android:name=".ui.myPage.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

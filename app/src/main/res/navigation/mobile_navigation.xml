@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.cafeapp.ui.dashboard.DashboardFragment"
+        android:name="com.example.cafeapp.ui.menu.MenuFragment"
         android:label="@string/title_menu"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_menu" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.cafeapp.ui.notifications.NotificationsFragment"
+        android:name="com.example.cafeapp.ui.myPage.MyPageFragment"
         android:label="@string/title_myPage"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_my_page" />
 </navigation>

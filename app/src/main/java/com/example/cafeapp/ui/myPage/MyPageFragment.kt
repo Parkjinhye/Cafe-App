@@ -1,4 +1,4 @@
-package com.example.cafeapp.ui.notifications
+package com.example.cafeapp.ui.myPage
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,19 +7,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cafeapp.data.OrderHistory
 import com.example.cafeapp.data.UserSession
-import com.example.cafeapp.databinding.FragmentNotificationsBinding
-import com.example.cafeapp.ui.dashboard.MenuAdapter
+import com.example.cafeapp.databinding.FragmentMyPageBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
-class NotificationsFragment : Fragment() {
+class MyPageFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentMyPageBinding? = null
 
     private val binding get() = _binding!!
     private lateinit var orderAdapter: OrderHistoryAdapter
@@ -31,7 +28,7 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentMyPageBinding.inflate(inflater, container, false)
         return binding.root
     }
 

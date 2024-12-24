@@ -1,4 +1,4 @@
-package com.example.cafeapp.ui.notifications
+package com.example.cafeapp.ui.myPage
 
 import android.view.LayoutInflater
 import android.view.View

@@ -40,7 +40,8 @@
         <TextView
             android:id="@+id/RankText"
             style="@style/TitleTextStyle"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
             android:text="인기 메뉴"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/indicator_layout" />
@@ -48,10 +49,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/RankText"
-            tools:layout_editor_absoluteX="20dp">
+            tools:layout_editor_absoluteX="5dp">
 
             <TextView
                 android:id="@+id/ranking2"
