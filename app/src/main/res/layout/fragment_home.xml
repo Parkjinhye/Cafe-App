@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
         tools:context=".ui.home.HomeFragment">
 
         <TextView
             android:id="@+id/EventText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TitleTextStyle"
             android:text="오늘의 이벤트"
-            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"/>
+            tools:ignore="MissingConstraints" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
@@ -29,24 +26,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/EventText" />
+
         <LinearLayout
             android:id="@+id/indicator_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/viewPager"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPager" />
 
         <TextView
             android:id="@+id/RankText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            style="@style/TitleTextStyle"
             android:layout_marginTop="16dp"
             android:text="인기 메뉴"
-            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/indicator_layout" />
 
@@ -63,27 +58,29 @@
                 android:layout_width="0dp"
                 android:layout_height="160dp"
                 android:layout_marginTop="40dp"
+                android:layout_marginRight="8dp"
                 android:layout_weight="3"
-                android:background="@color/purple_500"
+                android:background="@color/beige"
+                android:lineSpacingExtra="8dp"
                 android:padding="8dp"
                 android:text="2등"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:lineSpacingExtra="8dp"/>
+                android:textColor="@color/brown"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/ranking1"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
+                android:layout_marginRight="8dp"
                 android:layout_weight="3"
-                android:background="@color/purple_500"
+                android:background="@color/beige"
+                android:lineSpacingExtra="8dp"
                 android:padding="8dp"
                 android:text="1등"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:lineSpacingExtra="8dp"/>
+                android:textColor="@color/brown"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/ranking3"
@@ -91,13 +88,13 @@
                 android:layout_height="120dp"
                 android:layout_marginTop="80dp"
                 android:layout_weight="3"
-                android:background="@color/purple_500"
+                android:background="@color/beige"
+                android:lineSpacingExtra="8dp"
                 android:padding="8dp"
                 android:text="3등"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:lineSpacingExtra="8dp"/>
+                android:textColor="@color/brown"
+                android:textSize="18sp" />
 
 
         </LinearLayout>

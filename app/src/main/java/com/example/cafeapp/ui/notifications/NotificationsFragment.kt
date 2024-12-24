@@ -1,5 +1,6 @@
 package com.example.cafeapp.ui.notifications
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -37,28 +38,10 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         orderAdapter = OrderHistoryAdapter(orderList)
-        // Set user data from UserSession
-        // username이 있을 때와 없을 때 조건에 따라 처리
-        if (UserSession.username != null) { //로그인 하였을 때
-            binding.tvUsername.text = "환영합니다\n${UserSession.username}님!"
-            binding.tvPoints.text = "보유 포인트 : ${UserSession.point}" // username이 있을 때만 포인트 표시
-            binding.btnOpenLogin.visibility = View.INVISIBLE
-            binding.btnOpenSignup.visibility = View.INVISIBLE
-            binding.btnLogout.visibility = View.VISIBLE
 
-            fetchOrderHistory()
-            binding.tvNeedLogin.visibility = View.INVISIBLE
-        } else {
-            binding.tvUsername.text = "더 많은 기능을 위해 로그인을 해주세요"
-            binding.tvPoints.text = "" // username이 없으면 포인트 텍스트는 빈 값
-            binding.btnOpenLogin.visibility = View.VISIBLE
-            binding.btnOpenSignup.visibility = View.VISIBLE
-            binding.btnLogout.visibility = View.INVISIBLE
+        updateUI(UserSession.username != null)
 
-            binding.tvNeedLogin.visibility = View.VISIBLE
-        }
-
-        // 버튼 클릭 시 LoginActivity 열기
+        //로그인과 회원가입 모두 다른 액티비티에서 진행
         binding.btnOpenLogin.setOnClickListener {
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
@@ -67,25 +50,51 @@ class NotificationsFragment : Fragment() {
             val intent = Intent(requireContext(), SignUpActivity::class.java)
             startActivity(intent)
         }
+
+        // 로그아웃 처리: UserSession 데이터 초기화
         binding.btnLogout.setOnClickListener {
-            // 로그아웃 처리: UserSession 데이터 초기화
             UserSession.username = null
             UserSession.point = 0
 
-            // 버튼 상태 갱신
+            updateUI(isLoggedIn = false)
+        }
+
+        // 주문 내역
+        binding.recyclerViewOrders.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = orderAdapter
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateUI(isLoggedIn: Boolean) {
+        if (isLoggedIn) { // 로그인 상태
+            // 상단 컨테이너
+            binding.tvUsername.text = "환영합니다\n${UserSession.username}님!"
+            binding.tvPoints.visibility = View.VISIBLE
+            binding.tvPoints.text = "보유 포인트 : ${UserSession.point}"
+
+            binding.btnOpenLogin.visibility = View.INVISIBLE
+            binding.btnOpenSignup.visibility = View.INVISIBLE
+            binding.btnLogout.visibility = View.VISIBLE
+
+            //하단 주문 내역
+            fetchOrderHistory() // 주문 내역 로드
+            binding.recyclerViewOrders.visibility = View.VISIBLE
+            binding.tvNeedLogin.visibility = View.INVISIBLE
+
+        } else { // 비로그인 상태
+            // 상단 컨테이너
+            binding.tvUsername.text = "더 많은 기능을 위해 로그인을 해주세요!"
+            binding.tvPoints.visibility = View.INVISIBLE
+
             binding.btnOpenLogin.visibility = View.VISIBLE
             binding.btnOpenSignup.visibility = View.VISIBLE
             binding.btnLogout.visibility = View.INVISIBLE
 
-            // 추가적으로 UI 초기화 (필요에 따라)
-            binding.tvUsername.text = "더 많은 기능을 위해 로그인을 해주세요!"
-            binding.tvPoints.visibility = View.INVISIBLE
+            //하단 주문 내역
             binding.recyclerViewOrders.visibility = View.INVISIBLE
             binding.tvNeedLogin.visibility = View.VISIBLE
-        }
-        binding.recyclerViewOrders.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = orderAdapter
         }
     }
 

@@ -54,10 +54,10 @@ class OrderManager(private val context: Context){
             .document(userId)
             .update("point", FieldValue.increment(pointsToAdd.toLong()))
             .addOnSuccessListener {
-                Toast.makeText(context, "포인트가 ${pointsToAdd}점 추가되었습니다.", Toast.LENGTH_SHORT).show()
+                Log.d("PointUpdate", "포인트가 ${pointsToAdd}점 추가되었습니다.")
             }
             .addOnFailureListener { e ->
-                Toast.makeText(context, "포인트 업데이트 실패: ${e.message}", Toast.LENGTH_SHORT).show()
+                Log.e("PointUpdate", "포인트 업데이트 실패: ${e.message}")
             }
     }
     private fun updateMenuSold(menu: Menu) {

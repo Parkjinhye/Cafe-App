@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity() {
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 signUp(username, password)
             } else {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "입력칸을 모두 채워주세요", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -45,14 +45,14 @@ class SignUpActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "아이디가 중복되었습니다", Toast.LENGTH_SHORT).show()
                 } else {
                     // 신규 사용자 추가
                     db.collection("User")
                         .document(username)
                         .set(user)
                         .addOnSuccessListener {
-                            Toast.makeText(this, "Sign up successful! Please log in.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "회원가입 성공! 로그인을 해주세요", Toast.LENGTH_SHORT).show()
                             // 회원가입 성공 후 로그인 화면으로 이동
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)

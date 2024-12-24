@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 login(username, password)
             } else {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "입력칸을 모두 채워주세요", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -42,23 +42,25 @@ class LoginActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     val storedPassword = document.getString("password")
+
+                    // 로그인 성공
                     if (storedPassword == password) {
                         val point = document.getLong("point") ?: 0
 
-                        // Save user info in UserSession
+                        // 유저 정보를 저장합니다
                         UserSession.username = username
                         UserSession.point = point
 
-                        Toast.makeText(this, "Login successful! Points: $point", Toast.LENGTH_SHORT).show()
-                        // Pass the username globally or navigate to the next screen
+                        //로그인 성공시 메인 액티비티로 돌아간다
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
+
                     } else {
-                        Toast.makeText(this, "Invalid password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "비밀번호가 다릅니다", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "존재하지 않은 아이디입니다", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { e ->
